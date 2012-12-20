@@ -339,6 +339,10 @@ class Repository(object):
         url = self.base_url + 'followers/'
         return json.loads(self.gh.load_url(url))
 
+    def compare(self, base, head):
+        url = api_base + 'repos/%s/%s/compare/%s...%s' % (self.username, self.name, base, head)
+        return json.loads(self.gh.load_url(url))
+
     def __repr__(self):
         return '<Repository: %s\'s %s>' % (self.username, self.name)
 
